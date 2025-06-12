@@ -1,0 +1,20 @@
+agent:
+  apiUrls:
+    connect: "https://connect-api.bics.com"
+    mynumbers: "https://mynumbers-api.bics.com"
+    mynumbers-address: "https://mynumbers-api.bics.com"
+    mynumbers-cdr: "https://mynumbers-api.bics.com"
+    mynumbers-disconnection: "https://mynumbers-api.bics.com"
+    mynumbers-emergency: "https://mynumbers-api.bics.com"
+    mynumbers-porting: "https://mynumbers-api.bics.com"
+    sms: "https://sms-api.bics.com"
+  openAiApiKey: ${OPENAI_API_KEY:your-api-key-here}
+  openAiModel: ${OPENAI_MODEL:gpt-3.5-turbo}
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.bics.agent: DEBUG
+    root: INFO

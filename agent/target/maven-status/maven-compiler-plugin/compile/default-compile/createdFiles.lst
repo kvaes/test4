@@ -1,0 +1,15 @@
+com/bics/agent/functions/SmsPlugin.class
+com/bics/agent/exceptions/ConfigurationException.class
+com/bics/agent/BicsSemanticAgent.class
+com/bics/agent/functions/MyNumbersCDRPlugin.class
+com/bics/agent/functions/MyNumbersDisconnectionPlugin.class
+com/bics/agent/config/AgentConfiguration.class
+com/bics/agent/exceptions/ApiException.class
+com/bics/agent/functions/ConnectPlugin.class
+com/bics/agent/functions/MyNumbersNumberPortingPlugin.class
+com/bics/agent/Application.class
+com/bics/agent/functions/MyNumbersPlugin.class
+com/bics/agent/models/AuthenticationResponse.class
+com/bics/agent/exceptions/AgentException.class
+com/bics/agent/functions/MyNumbersAddressManagementPlugin.class
+com/bics/agent/functions/MyNumbersEmergencyServicesPlugin.class
