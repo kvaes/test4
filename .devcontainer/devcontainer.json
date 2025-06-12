@@ -1,0 +1,82 @@
+{
+  "name": "BICS Semantic Kernel Agent Development",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": true,
+      "azureDnsAutoDetection": true,
+      "installDockerBuildx": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    }
+  },
+
+  "forwardPorts": [8080, 3001, 5432, 6379],
+  "portsAttributes": {
+    "8080": {
+      "label": "Agent Application",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "Mock API Server",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": "cd agent && mvn dependency:resolve",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot",
+        "ms-vscode.vscode-docker",
+        "humao.rest-client",
+        "rangav.vscode-thunder-client",
+        "redhat.vscode-yaml",
+        "redhat.vscode-xml",
+        "ms-vscode.vscode-json",
+        "eamodio.gitlens",
+        "github.copilot",
+        "ms-vsliveshare.vsliveshare"
+      ],
+      "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.compile.nullAnalysis.mode": "automatic",
+        "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+        "files.exclude": {
+          "**/target": true,
+          "**/.mvn": true
+        },
+        "java.test.config": {
+          "name": "myConfiguration",
+          "workingDirectory": "${workspaceFolder}/agent",
+          "args": ["-ea"],
+          "vmargs": ["-Xmx512m"]
+        }
+      }
+    }
+  },
+
+  "mounts": [
+    "source=bics-agent-maven-cache,target=/home/vscode/.m2,type=volume"
+  ],
+
+  "remoteEnv": {
+    "JAVA_HOME": "/usr/local/sdkman/candidates/java/current",
+    "MAVEN_HOME": "/usr/local/sdkman/candidates/maven/current"
+  },
+
+  "containerEnv": {
+    "TZ": "UTC"
+  }
+}

@@ -1,0 +1,56 @@
+version: 2
+updates:
+  # Enable version updates for Maven in the agent directory
+  - package-ecosystem: "maven"
+    directory: "/agent"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "maven"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "java"
+      - "maven"
+    
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "github-actions"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      
+  # Enable version updates for Docker
+  - package-ecosystem: "docker"
+    directory: "/agent"
+    schedule:
+      interval: "daily"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "docker"
